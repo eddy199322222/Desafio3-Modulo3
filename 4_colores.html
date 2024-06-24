@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>4 Colores</title>
+</head>
+<body>
+  <div id="div1" style="width: 200px; height: 200px; background-color: blue;"></div>
+  <div id="div2" style="width: 200px; height: 200px; background-color: red;"></div>
+  <div id="div3" style="width: 200px; height: 200px; background-color: green;"></div>
+  <div id="div4" style="width: 200px; height: 200px; background-color: yellow;"></div>
+  <div id="key" style="width: 200px; height: 200px; background-color: white; border: 1px solid black;"></div>
+  <script>
+    const changeColorToBlack = (event) => {
+      event.target.style.backgroundColor = 'black';
+    };
+
+    document.getElementById('div1').addEventListener('click', changeColorToBlack);
+    document.getElementById('div2').addEventListener('click', changeColorToBlack);
+    document.getElementById('div3').addEventListener('click', changeColorToBlack);
+    document.getElementById('div4').addEventListener('click', changeColorToBlack);
+
+    let colorMap = {
+      'a': 'pink',
+      's': 'orange',
+      'd': 'skyblue',
+      'q': 'purple',
+      'w': 'gray',
+      'e': 'brown'
+    };
+
+    document.addEventListener('keydown', function(event) {
+      let color = colorMap[event.key];
+      if (color) {
+        if (['a', 's', 'd'].includes(event.key)) {
+          document.getElementById('key').style.backgroundColor = color;
+        } else if (['q', 'w', 'e'].includes(event.key)) {
+          let newDiv = document.createElement('div');
+          newDiv.style.width = '200px';
+          newDiv.style.height = '200px';
+          newDiv.style.backgroundColor = color;
+          newDiv.style.border = '1px solid black';
+          document.body.appendChild(newDiv);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
